@@ -1,0 +1,475 @@
+1) Product Overview
+
+Senpai Career is a membership-based platform for international students in Japan.
+
+Core concept:
+
+Start with OB/OG (alumni) career interviews (mentoring / consultation)
+
+Then connect to long-term internships and new graduate recruiting
+
+Enable companies to search students and send paid scout DMs (credit-based)
+
+Positioning (from slides):
+
+Not “regular hiring” first — Senpai Career creates a “try-first entry point”
+Keywords: low risk / start small / step-by-step
+
+Primary CTA messaging ideas:
+
+“Give international students a fair start line for job hunting”
+
+“Start accepting international interns with low risk”
+
+“Free consultation” CTA exists in slides (contact: info@senpaicareer.com
+)
+
+2) Goals (Business + UX)
+Student-side goals
+
+Provide a fair start line for job hunting in Japan
+
+Reduce uncertainty via accessible mentors (OB/OG) and safe rules
+
+Help students discover internships / new grad opportunities aligned with interests
+
+Company-side goals
+
+Expand candidate pool (“wider hiring funnel”)
+
+Enable student search + scout outreach
+
+Reduce mismatch risk (try-first / work-fit confirmation)
+
+Operate safely with rules, reporting, and enforcement
+
+Safety / governance goals
+
+Prevent misuse (dating, solicitation, recruiting off-platform, etc.)
+
+Keep the community safe via:
+
+terms + required consent
+
+reporting
+
+strike-based bans
+
+reviews
+
+3) User Roles (3 account types)
+
+Student (international student)
+
+OB/OG (working professionals + can include students with job offers)
+
+Company (HR)
+
+Shared requirements (all roles)
+
+Sign up / log in
+
+Top-right global icons:
+
+Notifications (bell)
+
+Messages (inbox)
+
+Users can edit their own profile
+
+OB/OG UI can be mostly the same as Student UI
+
+4) Public Landing Pages (Logged-out)
+Header / global elements
+
+Top-left: Senpai Career logo
+
+Hero: catchphrase (JP): 「留学生の就活にフェアなスタートラインを」
+
+Top-right buttons:
+
+Student Sign Up
+
+OB/OG Sign Up
+
+Log In
+
+(Client also requested bell + message icons in top-right for all pages; if logged-out, these likely link to login)
+
+Must-have sections on LP
+
+What is Senpai Career
+
+Our Mission
+
+What is OB/OG visit (overview)
+
+Proposed global navigation (public)
+
+About Us / Our Mission
+
+OB/OG Visit
+
+Long-term Internship
+
+New Graduate Recruiting
+
+Subsidy Info
+
+For Companies
+
+For OB/OG
+
+5) Core Features (MVP Web App)
+5.1 OB/OG Visit — Student-side UI
+(A) OB/OG List page (Card UI)
+
+Top: “What is OB/OG Visit” (shortened LP version)
+
+Below: list of OB/OG cards
+
+Card fields:
+
+Profile photo (face/icon)
+
+Type: “working professional” or “job-offer holder”
+
+Nickname / name
+
+University name
+
+Nationality
+
+Company name
+
+Topics they can discuss (categories)
+
+One-line message
+
+(B) OB/OG Detail page + DM
+
+Click card → detail page
+
+Detail fields:
+
+Type: working / job-offer holder
+
+Name/nickname
+
+University
+
+Company
+
+Nationality
+
+Languages
+
+Topics supported (career advice, life advice, interview practice, etc.)
+
+One-line message
+
+Student-era summary (short OK)
+
+Bottom: message input + Submit (Student → OB/OG DM)
+
+5.2 Messaging (All roles)
+(A) Inbox / thread list
+
+Thread list for conversations with OB/OG and companies
+
+Left: round avatar (face/logo)
+
+Show preview snippet
+
+Status tag: “sent / no reply” (or similar)
+
+Company scout messages appear in the same inbox
+
+(B) Chat detail
+
+Right: self / Left: other (with avatar)
+
+UI should support scheduling coordination inside the chat
+
+5.3 Notifications (Bell)
+
+Purpose: based on the student’s desired industry, notify about:
+
+New long-term internship posts
+
+Updates to new graduate recruiting info
+
+UX flow:
+
+Click bell → dropdown list of concise notifications
+
+Click an item → notification detail page (full content + link)
+
+Personalization rule:
+
+Student profile has “desired industry” field
+
+Notifications filtered by that mapping
+
+6) Terms, Rules, and Safety Controls
+6.1 Terms + Rules acceptance (mandatory)
+
+During registration, show:
+
+Terms of Service
+
+Rules / Notice
+
+Checkbox required to complete registration
+
+6.2 Rules / prohibited actions (must display and require consent)
+
+No use outside job hunting/career consultation
+
+Exchanging personal contact info: generally prohibited
+
+No online meetings after 10pm
+
+No meetings involving alcohol
+
+No meetings in private off-site rooms (recommend open cafe / office meeting room)
+
+No recording / filming / posting to SNS
+
+No religious or business solicitation
+
+Strong warning: no ghosting / no-show for students (serious)
+
+Additional rule for OB/OG:
+
+No “poaching” / taking students off-platform to recruit directly
+
+6.3 Violations & enforcement
+
+Student no-show/ghosting:
+
+2 strikes → permanent ban
+
+Track violation count + ban processing
+
+Reporting workflow:
+
+OB/OG can report to admins via report button/form
+
+Must be stored so admins can review
+
+6.4 Post-session mutual reviews
+
+After a meeting, both parties review each other:
+
+Star rating 1–5 + optional comment (simple, Google-review style)
+
+7) Internship & New Graduate Listings (Same UI pattern as OB list)
+
+Use similar card UI as OB/OG list
+
+Card example info:
+
+hourly wage
+
+work details
+
+skills gained
+
+“why this company”
+
+company logo/photo
+
+Click card → detail page
+
+Bottom: apply CTA (message / apply button)
+
+8) Company-side (Login area is “most important”)
+8.1 Default landing after login
+
+When a company logs in, the first page should be “Company Page Editor” (acts as the company’s internal LP).
+
+Editable fields:
+
+Image (logo / office photo)
+
+Company overview
+
+Work location
+
+Hourly wage
+
+Weekly hours / weekly days
+
+Minimum required weekly hours
+
+Internship details OR new grad details
+
+Ideal candidate (incl. skills)
+
+Selling points / appeal
+
+One-line message to students
+
+8.2 Company navigation (fixed 5 items)
+
+Company Page Editor
+
+Student List
+
+Contact / Inquiry
+
+For Companies page
+
+What is Senpai Career
+
+Top-right icons: bell + message (same as other roles)
+
+8.3 Student list (for companies)
+
+Card UI similar to OB list.
+Visible fields:
+
+Profile photo
+
+University
+
+Year (grade)
+
+Languages
+
+Interests
+
+Past internship experience
+
+Skills
+
+8.4 Company filters (6 items)
+
+Languages
+
+JLPT level (N1/N2/N3)
+
+Desired work location
+
+Weekly available hours
+
+Skills
+
+Experience (what they did before / internships)
+
+Required note on company UI:
+
+Students can work up to 28 hours/week during term
+
+Up to 40 hours/week during long breaks
+
+8.5 Company → Student messaging (individual + bulk)
+
+Bulk send: select multiple students and message them
+
+Individual send: from a student profile
+
+8.6 Paid scouting (credit-based)
+
+Company messages are paid via credits
+
+Example: ¥200 per message
+
+Credits consumed at send time
+
+Payment implementation: propose (Stripe assumed)
+
+8.7 Company inquiry
+
+Provide an inquiry form/page for companies to contact admin/ops
+
+9) Admin / Back-office (Minimum needed)
+
+Client asked whether a minimal admin panel is needed for:
+
+Reports / violations review
+
+Ban management (strike count, enforce ban)
+
+Reviews monitoring
+
+Credit/payment monitoring (at least view logs)
+
+Minimum ops requirement (MVP):
+
+View reports + basic case notes
+
+Update strike counts + ban/unban users
+
+View message logs metadata (not necessarily contents, depending on privacy policy)
+
+View transaction/credit logs
+
+10) MVP Scope (your suggested minimal build)
+
+Your MVP proposal aligns well with client’s core needs:
+
+Public LP → registration funnel
+
+Auth + role-based permissions (Student/OB/OG/Company)
+
+Profile creation/edit
+
+Listing + search/filter (critical)
+
+1:1 messaging
+
+Report + minimal admin review screen (safety baseline)
+
+(Everything else can be phased: notifications personalization, mutual reviews, credit payments, bulk messaging, etc.)
+
+11) Slide-based supporting content (for LP / marketing)
+
+Useful messages to incorporate in design/copy:
+
+Hiring is hard: labor shortage + limited channels + lack of know-how
+
+“Casual hiring experience”: try first, confirm fit through work
+
+Market is moving: international white-collar hiring increasing
+
+International students often join smaller companies → “early access advantage”
+
+Add-on services: training + monthly check
+
+Training-only: 3h from ¥40,000
+
+Monthly ops check: ¥3,000 per intern
+
+“Start with 1 intern” model: deposit + success fee after 1 month
+
+Traction data (self-reported):
+
+Registered students: N=63 (as of Dec 2025)
+
+Keio 31 / Ritsumeikan 19 / Waseda 6 / Univ. of Tokyo 6
+
+12) Open Questions / Decisions Needed (for the client)
+
+To finalize build scope and estimate, confirm:
+
+Exact MVP phase: which of these are included now?
+
+notifications + personalization
+
+mutual reviews
+
+bulk messaging
+
+credit payment + Stripe integration
+
+Meeting scheduling: “inside chat” only, or calendar booking feature?
+
+Contact exchange rule: “generally prohibited” → define allowed exception cases (if any)
+
+Data privacy: can admins view message content, or only metadata?
+
+Multi-language UI requirements (JP only? EN/others?)
+
+Legal pages: terms / privacy policy copy provided by client or drafted by you?
