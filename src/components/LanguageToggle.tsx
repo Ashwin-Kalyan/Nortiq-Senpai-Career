@@ -13,7 +13,7 @@ const LanguageToggle: React.FC = () => {
   return (
     <motion.button
       onClick={toggleLanguage}
-      className="relative flex items-center gap-2 px-4 py-2 rounded-full bg-white shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden"
+      className="relative flex items-center gap-2 px-4 py-2 rounded-[9999px] bg-white shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden"
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
     >

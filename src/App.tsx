@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { LanguageProvider } from './contexts/LanguageContext';
 import Header from './components/Header';
 import LandingPage from './pages/LandingPage';
+import AboutUs from './pages/AboutUs';
+import OBVisitLP from './pages/OBVisitLP';
 import LoginPage from './pages/LoginPage';
 import SignupPage from './pages/SignupPage';
 import Dashboard from './pages/Dashboard';
@@ -24,6 +26,8 @@ function App() {
           <Header isLoggedIn={isLoggedIn} userRole={userRole} />
           <Routes>
             <Route path="/" element={<LandingPage />} />
+            <Route path="/about" element={<AboutUs />} />
+            <Route path="/ob-visit" element={<OBVisitLP />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/signup/:type" element={<SignupPage />} />
             <Route path="/dashboard" element={<Dashboard />} />
@@ -33,7 +37,6 @@ function App() {
             <Route path="/notifications" element={<Notifications />} />
             <Route path="/company" element={<CompanyDashboard />} />
             <Route path="/admin" element={<AdminPanel />} />
-            <Route path="/about" element={<LandingPage />} />
             <Route path="/internship" element={<OBOGList />} />
             <Route path="/for-companies" element={<LandingPage />} />
           </Routes>
