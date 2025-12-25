@@ -140,12 +140,12 @@ const OBVisitLP: React.FC = () => {
               <h3 className="text-2xl font-bold mb-4 gradient-text">
                 {language === 'ja' ? '内定者' : 'Job-Offer Holders'}
               </h3>
-              <p className="text-gray-900 dark:text-gray-300 mb-4">
+              <p className="text-black dark:text-gray-300 mb-4">
                 {language === 'ja'
                   ? '最近就活を経験したばかりの内定者から、最新の就活情報や面接対策、選考プロセスについて学べます。'
                   : 'Learn from recent job-offer holders who have just experienced job hunting about the latest job hunting information, interview strategies, and selection processes.'}
               </p>
-              <ul className="space-y-2 text-gray-800 dark:text-gray-400">
+              <ul className="space-y-2 text-black dark:text-gray-400">
                 <li className="flex items-start">
                   <span className="text-green-500 mr-2">✓</span>
                   {language === 'ja' ? '最新の就活情報' : 'Latest job hunting information'}
@@ -196,12 +196,12 @@ const OBVisitLP: React.FC = () => {
               <h3 className="text-2xl font-bold mb-4 gradient-text">
                 {language === 'ja' ? '社会人' : 'Working Professionals'}
               </h3>
-              <p className="text-gray-900 dark:text-gray-300 mb-4">
+              <p className="text-black dark:text-gray-300 mb-4">
                 {language === 'ja'
                   ? '実際に働いている社会人の先輩から、キャリアパス、職場環境、業界の実態について学べます。'
                   : 'Learn from working professionals about career paths, workplace environments, and industry realities.'}
               </p>
-              <ul className="space-y-2 text-gray-800 dark:text-gray-400">
+              <ul className="space-y-2 text-black dark:text-gray-400">
                 <li className="flex items-start">
                   <span className="text-blue-500 mr-2">✓</span>
                   {language === 'ja' ? 'キャリアパスの相談' : 'Career path consultation'}
