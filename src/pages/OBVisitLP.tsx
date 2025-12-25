@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { FiUsers, FiMessageCircle, FiBriefcase, FiArrowRight, FiCheckCircle } from 'react-icons/fi';
@@ -6,6 +6,7 @@ import { useLanguage } from '../contexts/LanguageContext';
 
 const OBVisitLP: React.FC = () => {
   const { t, language } = useLanguage();
+  const [hoveredBox, setHoveredBox] = useState<number | null>(null);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -48,7 +49,7 @@ const OBVisitLP: React.FC = () => {
             </motion.h1>
             <motion.p
               variants={itemVariants}
-              className="text-xl md:text-2xl text-gray-700 max-w-4xl mx-auto leading-relaxed"
+              className="text-xl md:text-2xl text-black max-w-4xl mx-auto leading-relaxed"
             >
               {language === 'ja'
                 ? '内定者及び社会人にキャリア相談、就活について、社風を聞くなど自由に自身の就活に役立つ使い方ができるシステム！'
@@ -74,7 +75,7 @@ const OBVisitLP: React.FC = () => {
             <h2 className="text-4xl font-bold mb-6 gradient-text">
               {language === 'ja' ? 'OB訪問とは' : 'What is OB/OG Visit'}
             </h2>
-            <p className="text-xl text-gray-700 max-w-4xl mx-auto leading-relaxed">
+            <p className="text-xl text-black max-w-4xl mx-auto leading-relaxed">
               {language === 'ja'
                 ? 'OB/OG訪問は、在日留学生が先輩（内定者や社会人）とつながり、キャリアアドバイスや就活のサポートを受けることができる機能です。実際に働いている先輩や、就活を経験したばかりの内定者から、リアルな情報やアドバイスを得ることができます。'
                 : 'OB/OG Visit is a feature that allows international students in Japan to connect with alumni (job-offer holders and working professionals) to receive career advice and job hunting support. You can get real information and advice from seniors who are actually working or recent job-offer holders who have just experienced job hunting.'}
@@ -96,7 +97,7 @@ const OBVisitLP: React.FC = () => {
             <h2 className="text-4xl font-bold mb-8 gradient-text text-center">
               {language === 'ja' ? '内定者及び社会人のプロフィール欄' : 'Job-Offer Holders & Working Professionals'}
             </h2>
-            <p className="text-xl text-gray-700 text-center max-w-3xl mx-auto mb-12">
+            <p className="text-xl text-black text-center max-w-3xl mx-auto mb-12">
               {language === 'ja'
                 ? '2種類の先輩プロフィールから、あなたに合った相談相手を見つけることができます'
                 : 'Find the right person to consult with from two types of senior profiles'}
@@ -109,20 +110,42 @@ const OBVisitLP: React.FC = () => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="mac-card p-8"
+              animate={hoveredBox === 0 ? {
+                scale: 1.05,
+                y: -8,
+                transition: {
+                  type: "spring",
+                  stiffness: 1200,
+                  damping: 20
+                }
+              } : {
+                scale: 1,
+                y: 0,
+                transition: {
+                  type: "spring",
+                  stiffness: 1500,
+                  damping: 25
+                }
+              }}
+              className="mac-card p-8 relative group cursor-pointer"
+              style={{
+                boxShadow: hoveredBox === 0 ? '0 0 20px 4px rgba(34, 197, 94, 0.08), 0 0 40px 8px rgba(34, 197, 94, 0.05), 0 0 60px 12px rgba(34, 197, 94, 0.03), 0 0 80px 16px rgba(34, 197, 94, 0.02)' : '0 2px 8px rgba(0, 0, 0, 0.08)'
+              }}
+              onMouseEnter={() => setHoveredBox(0)}
+              onMouseLeave={() => setHoveredBox(null)}
             >
               <div className="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center mb-6">
                 <FiCheckCircle className="text-3xl text-green-600" />
               </div>
-              <h3 className="text-2xl font-bold mb-4 text-gray-800">
+              <h3 className="text-2xl font-bold mb-4 gradient-text">
                 {language === 'ja' ? '内定者' : 'Job-Offer Holders'}
               </h3>
-              <p className="text-gray-700 mb-4">
+              <p className="text-gray-900 dark:text-gray-300 mb-4">
                 {language === 'ja'
                   ? '最近就活を経験したばかりの内定者から、最新の就活情報や面接対策、選考プロセスについて学べます。'
                   : 'Learn from recent job-offer holders who have just experienced job hunting about the latest job hunting information, interview strategies, and selection processes.'}
               </p>
-              <ul className="space-y-2 text-gray-600">
+              <ul className="space-y-2 text-gray-800 dark:text-gray-400">
                 <li className="flex items-start">
                   <span className="text-green-500 mr-2">✓</span>
                   {language === 'ja' ? '最新の就活情報' : 'Latest job hunting information'}
@@ -143,20 +166,42 @@ const OBVisitLP: React.FC = () => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="mac-card p-8"
+              animate={hoveredBox === 1 ? {
+                scale: 1.05,
+                y: -8,
+                transition: {
+                  type: "spring",
+                  stiffness: 1200,
+                  damping: 20
+                }
+              } : {
+                scale: 1,
+                y: 0,
+                transition: {
+                  type: "spring",
+                  stiffness: 1500,
+                  damping: 25
+                }
+              }}
+              className="mac-card p-8 relative group cursor-pointer"
+              style={{
+                boxShadow: hoveredBox === 1 ? '0 0 20px 4px rgba(59, 130, 246, 0.08), 0 0 40px 8px rgba(59, 130, 246, 0.05), 0 0 60px 12px rgba(59, 130, 246, 0.03), 0 0 80px 16px rgba(59, 130, 246, 0.02)' : '0 2px 8px rgba(0, 0, 0, 0.08)'
+              }}
+              onMouseEnter={() => setHoveredBox(1)}
+              onMouseLeave={() => setHoveredBox(null)}
             >
               <div className="w-16 h-16 rounded-full bg-blue-100 flex items-center justify-center mb-6">
                 <FiBriefcase className="text-3xl text-blue-600" />
               </div>
-              <h3 className="text-2xl font-bold mb-4 text-gray-800">
+              <h3 className="text-2xl font-bold mb-4 gradient-text">
                 {language === 'ja' ? '社会人' : 'Working Professionals'}
               </h3>
-              <p className="text-gray-700 mb-4">
+              <p className="text-gray-900 dark:text-gray-300 mb-4">
                 {language === 'ja'
                   ? '実際に働いている社会人の先輩から、キャリアパス、職場環境、業界の実態について学べます。'
                   : 'Learn from working professionals about career paths, workplace environments, and industry realities.'}
               </p>
-              <ul className="space-y-2 text-gray-600">
+              <ul className="space-y-2 text-gray-800 dark:text-gray-400">
                 <li className="flex items-start">
                   <span className="text-blue-500 mr-2">✓</span>
                   {language === 'ja' ? 'キャリアパスの相談' : 'Career path consultation'}
@@ -188,7 +233,7 @@ const OBVisitLP: React.FC = () => {
             <h2 className="text-4xl font-bold mb-6 gradient-text">
               {language === 'ja' ? '活用例' : 'Use Cases'}
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-xl text-black max-w-3xl mx-auto">
               {language === 'ja'
                 ? 'OB訪問を活用して、あなたの就活をサポートします'
                 : 'Use OB/OG Visit to support your job hunting'}
@@ -228,13 +273,43 @@ const OBVisitLP: React.FC = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="mac-card p-8 text-center"
+                animate={hoveredBox === index + 2 ? {
+                  scale: 1.05,
+                  y: -8,
+                  transition: {
+                    type: "spring",
+                    stiffness: 1200,
+                    damping: 20
+                  }
+                } : {
+                  scale: 1,
+                  y: 0,
+                  transition: {
+                    type: "spring",
+                    stiffness: 1500,
+                    damping: 25
+                  }
+                }}
+                className="mac-card p-8 text-center relative group cursor-pointer"
+                style={{
+                  boxShadow: hoveredBox === index + 2 ? (() => {
+                    const colors = [
+                      { inner: 'rgba(236, 72, 153, 0.08)', mid1: 'rgba(236, 72, 153, 0.05)', mid2: 'rgba(236, 72, 153, 0.03)', outer: 'rgba(59, 130, 246, 0.02)' },
+                      { inner: 'rgba(59, 130, 246, 0.08)', mid1: 'rgba(59, 130, 246, 0.05)', mid2: 'rgba(59, 130, 246, 0.03)', outer: 'rgba(59, 130, 246, 0.02)' },
+                      { inner: 'rgba(168, 85, 247, 0.08)', mid1: 'rgba(168, 85, 247, 0.05)', mid2: 'rgba(168, 85, 247, 0.03)', outer: 'rgba(168, 85, 247, 0.02)' }
+                    ];
+                    const color = colors[index] || colors[0];
+                    return `0 0 20px 4px ${color.inner}, 0 0 40px 8px ${color.mid1}, 0 0 60px 12px ${color.mid2}, 0 0 80px 16px ${color.outer}`;
+                  })() : '0 2px 8px rgba(0, 0, 0, 0.08)'
+                }}
+                onMouseEnter={() => setHoveredBox(index + 2)}
+                onMouseLeave={() => setHoveredBox(null)}
               >
                 <div className={`w-16 h-16 mx-auto mb-6 rounded-full bg-gradient-to-br ${useCase.color} flex items-center justify-center`}>
                   <useCase.icon className="text-3xl text-white" />
                 </div>
-                <h3 className="text-2xl font-bold mb-4 text-gray-800">{useCase.title}</h3>
-                <p className="text-gray-600">{useCase.description}</p>
+                <h3 className="text-2xl font-bold mb-4 gradient-text">{useCase.title}</h3>
+                <p className="text-gray-900 dark:text-gray-400">{useCase.description}</p>
               </motion.div>
             ))}
           </div>
@@ -292,8 +367,8 @@ const OBVisitLP: React.FC = () => {
                   {step.step}
                 </div>
                 <div>
-                  <h3 className="text-2xl font-bold mb-2 text-gray-800">{step.title}</h3>
-                  <p className="text-gray-700">{step.description}</p>
+                  <h3 className="text-2xl font-bold mb-2 text-black">{step.title}</h3>
+                  <p className="text-black">{step.description}</p>
                 </div>
               </motion.div>
             ))}
@@ -334,7 +409,7 @@ const OBVisitLP: React.FC = () => {
           >
             <Link
               to="/signup/student"
-              className="px-8 py-4 rounded-full bg-white text-gray-800 font-semibold hover:shadow-xl transition-all flex items-center justify-center gap-2"
+              className="px-8 py-4 rounded-full bg-white text-black font-semibold hover:shadow-xl transition-all flex items-center justify-center gap-2"
             >
               {language === 'ja' ? '学生として登録' : 'Sign Up as Student'}
               <FiArrowRight />

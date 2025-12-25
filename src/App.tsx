@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { LanguageProvider } from './contexts/LanguageContext';
 import Header from './components/Header';
+import ScrollProgressBar from './components/ScrollProgressBar';
 import LandingPage from './pages/LandingPage';
 import AboutUs from './pages/AboutUs';
 import OBVisitLP from './pages/OBVisitLP';
@@ -23,6 +24,7 @@ function App() {
     <LanguageProvider>
       <Router>
         <div className="min-h-screen bg-background">
+          <ScrollProgressBar />
           <Header isLoggedIn={isLoggedIn} userRole={userRole} />
           <Routes>
             <Route path="/" element={<LandingPage />} />

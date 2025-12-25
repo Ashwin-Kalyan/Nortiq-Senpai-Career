@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { FiArrowRight, FiUsers, FiBriefcase, FiTarget, FiMail } from 'react-icons/fi';
@@ -6,6 +6,7 @@ import { useLanguage } from '../contexts/LanguageContext';
 
 const LandingPage: React.FC = () => {
   const { t, language } = useLanguage();
+  const [hoveredBox, setHoveredBox] = useState<number | null>(null);
 
   const heroText = language === 'ja' 
     ? '留学生の就活にフェアなスタートラインを'
@@ -52,7 +53,7 @@ const LandingPage: React.FC = () => {
             </motion.h1>
             <motion.p
               variants={itemVariants}
-              className="text-xl md:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto"
+              className="text-xl md:text-2xl text-black mb-8 max-w-3xl mx-auto"
             >
               {language === 'ja' 
                 ? '低リスクで始められる、ステップバイステップの就活支援プラットフォーム'
@@ -75,7 +76,7 @@ const LandingPage: React.FC = () => {
                 href="#about"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-8 py-4 rounded-full bg-white border-2 border-gray-300 text-gray-700 font-semibold flex items-center gap-2 hover:border-pink-400 transition-all"
+                className="px-8 py-4 rounded-full bg-white border-2 border-gray-300 text-black font-semibold flex items-center gap-2 hover:border-pink-400 transition-all"
               >
                 {t('btn.learnMore')}
                 <FiArrowRight />
@@ -96,7 +97,7 @@ const LandingPage: React.FC = () => {
             className="text-center mb-16"
           >
             <h2 className="text-4xl font-bold mb-4 gradient-text">{t('section.whatIs')}</h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-xl text-black max-w-3xl mx-auto">
               {language === 'ja'
                 ? 'Senpai Careerは、在日留学生向けの会員制プラットフォームです。OB/OG訪問から始まり、長期インターンシップ、新卒採用まで、段階的にキャリア形成をサポートします。'
                 : 'Senpai Career is a membership-based platform for international students in Japan. Starting with OB/OG career interviews, we connect students to long-term internships and new graduate recruiting opportunities.'}
@@ -133,13 +134,43 @@ const LandingPage: React.FC = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="mac-card p-8 text-center bounce-in"
+                animate={hoveredBox === index ? {
+                  scale: 1.05,
+                  y: -8,
+                  transition: {
+                    type: "spring",
+                    stiffness: 1200,
+                    damping: 20
+                  }
+                } : {
+                  scale: 1,
+                  y: 0,
+                  transition: {
+                    type: "spring",
+                    stiffness: 1500,
+                    damping: 25
+                  }
+                }}
+                className="mac-card p-8 text-center relative group cursor-pointer"
+                style={{
+                  boxShadow: hoveredBox === index ? (() => {
+                    const colors = [
+                      { inner: 'rgba(236, 72, 153, 0.08)', mid1: 'rgba(236, 72, 153, 0.05)', mid2: 'rgba(236, 72, 153, 0.03)', outer: 'rgba(59, 130, 246, 0.02)' },
+                      { inner: 'rgba(59, 130, 246, 0.08)', mid1: 'rgba(59, 130, 246, 0.05)', mid2: 'rgba(59, 130, 246, 0.03)', outer: 'rgba(59, 130, 246, 0.02)' },
+                      { inner: 'rgba(168, 85, 247, 0.08)', mid1: 'rgba(168, 85, 247, 0.05)', mid2: 'rgba(168, 85, 247, 0.03)', outer: 'rgba(168, 85, 247, 0.02)' }
+                    ];
+                    const color = colors[index] || colors[0];
+                    return `0 0 20px 4px ${color.inner}, 0 0 40px 8px ${color.mid1}, 0 0 60px 12px ${color.mid2}, 0 0 80px 16px ${color.outer}`;
+                  })() : '0 2px 8px rgba(0, 0, 0, 0.08)'
+                }}
+                onMouseEnter={() => setHoveredBox(index)}
+                onMouseLeave={() => setHoveredBox(null)}
               >
                 <div className="w-16 h-16 mx-auto mb-4 rounded-full gradient-accent flex items-center justify-center">
                   <feature.icon className="text-3xl text-white" />
                 </div>
-                <h3 className="text-2xl font-bold mb-4 text-gray-800">{feature.title}</h3>
-                <p className="text-gray-600">{feature.description}</p>
+                <h3 className="text-2xl font-bold mb-4 gradient-text">{feature.title}</h3>
+                <p className="text-gray-800 dark:text-gray-400">{feature.description}</p>
               </motion.div>
             ))}
           </div>
@@ -157,7 +188,7 @@ const LandingPage: React.FC = () => {
             className="text-center"
           >
             <h2 className="text-4xl font-bold mb-8 gradient-text">{t('section.mission')}</h2>
-            <div className="max-w-4xl mx-auto space-y-6 text-lg text-gray-700">
+            <div className="max-w-4xl mx-auto space-y-6 text-lg text-black">
               <p>
                 {language === 'ja'
                   ? '私たちは、在日留学生が公平なスタートラインから就活を始められる環境を提供します。低リスクで始められ、段階的にキャリアを築いていけるプラットフォームを目指しています。'
@@ -185,8 +216,8 @@ const LandingPage: React.FC = () => {
             <h2 className="text-3xl font-bold mb-4 gradient-text">
               {language === 'ja' ? '登録学生数' : 'Registered Students'}
             </h2>
-            <p className="text-5xl font-bold text-gray-800 mb-2">63</p>
-            <p className="text-gray-600">
+            <p className="text-5xl font-bold text-black mb-2">63</p>
+            <p className="text-black">
               {language === 'ja' ? '2025年12月時点' : 'As of December 2025'}
             </p>
           </motion.div>
@@ -206,7 +237,7 @@ const LandingPage: React.FC = () => {
                 className="mac-card p-6"
               >
                 <p className="text-3xl font-bold gradient-text mb-2">{stat.count}</p>
-                <p className="text-gray-600">{stat.name}</p>
+                <p className="text-black">{stat.name}</p>
               </motion.div>
             ))}
           </div>
@@ -245,7 +276,7 @@ const LandingPage: React.FC = () => {
           >
             <Link
               to="/for-companies"
-              className="inline-block px-8 py-4 rounded-full bg-white text-gray-800 font-semibold hover:shadow-xl transition-all"
+              className="inline-block px-8 py-4 rounded-full bg-white text-black font-semibold hover:shadow-xl transition-all"
             >
               {t('nav.forCompanies')}
             </Link>

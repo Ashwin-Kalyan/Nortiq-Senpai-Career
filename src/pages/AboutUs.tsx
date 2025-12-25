@@ -51,7 +51,7 @@ const AboutUs: React.FC = () => {
             </motion.h1>
             <motion.p
               variants={itemVariants}
-              className="text-2xl md:text-3xl font-semibold mb-4 text-gray-800"
+              className="text-2xl md:text-3xl font-semibold mb-4 text-black"
             >
               {language === 'ja'
                 ? '留学生の就活に、フェアなスタートラインを'
@@ -77,7 +77,7 @@ const AboutUs: React.FC = () => {
             <h2 className="text-4xl font-bold mb-6 gradient-text">
               {language === 'ja' ? '私たちのミッション' : 'Our Mission'}
             </h2>
-            <p className="text-xl text-gray-700 max-w-4xl mx-auto leading-relaxed">
+            <p className="text-xl text-black max-w-4xl mx-auto leading-relaxed">
               {language === 'ja'
                 ? 'Senpai Careerは、在日留学生が公平なスタートラインから就活を始められる環境を提供します。私たちは、低リスクで始められ、段階的にキャリアを築いていけるプラットフォームを目指しています。'
                 : 'Senpai Career provides international students in Japan with a fair starting line for job hunting. We aim to create a platform that enables a low-risk, step-by-step approach to building careers.'}
@@ -138,10 +138,10 @@ const AboutUs: React.FC = () => {
                 <div className="w-16 h-16 rounded-full bg-red-100 flex items-center justify-center mb-4">
                   <FiUsers className="text-3xl text-red-600" />
                 </div>
-                <h3 className="text-2xl font-bold mb-4 text-gray-800">
+                <h3 className="text-2xl font-bold mb-4 text-black">
                   {language === 'ja' ? '留学生の課題' : 'Challenges for International Students'}
                 </h3>
-                <ul className="space-y-3 text-gray-700">
+                <ul className="space-y-3 text-black">
                   <li className="flex items-start">
                     <span className="text-pink-500 mr-2">•</span>
                     {language === 'ja'
@@ -201,10 +201,10 @@ const AboutUs: React.FC = () => {
                 <div className="w-16 h-16 rounded-full bg-blue-100 flex items-center justify-center mb-4">
                   <FiTrendingUp className="text-3xl text-blue-600" />
                 </div>
-                <h3 className="text-2xl font-bold mb-4 text-gray-800">
+                <h3 className="text-2xl font-bold mb-4 text-black">
                   {language === 'ja' ? '採用の課題' : 'Hiring Challenges'}
                 </h3>
-                <ul className="space-y-3 text-gray-700">
+                <ul className="space-y-3 text-black">
                   <li className="flex items-start">
                     <span className="text-blue-500 mr-2">•</span>
                     {language === 'ja'
@@ -243,7 +243,7 @@ const AboutUs: React.FC = () => {
             <h2 className="text-4xl font-bold mb-6 gradient-text">
               {language === 'ja' ? 'プラットフォームの概要' : 'Platform Overview'}
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-12">
+            <p className="text-xl text-black max-w-3xl mx-auto mb-12">
               {language === 'ja'
                 ? '段階的なアプローチで、留学生のキャリア形成をサポートします'
                 : 'We support international students\' career development through a step-by-step approach'}
@@ -322,8 +322,8 @@ const AboutUs: React.FC = () => {
                 <div className={`w-16 h-16 mx-auto mb-6 rounded-full bg-gradient-to-br ${item.color} flex items-center justify-center text-white text-2xl font-bold`}>
                   {item.step}
                 </div>
-                <h3 className="text-2xl font-bold mb-4 text-gray-800">{item.title}</h3>
-                <p className="text-gray-600">{item.description}</p>
+                <h3 className="text-2xl font-bold mb-4 gradient-text">{item.title}</h3>
+                <p className="text-gray-800 dark:text-gray-400">{item.description}</p>
               </motion.div>
             ))}
           </div>
@@ -363,7 +363,7 @@ const AboutUs: React.FC = () => {
           >
             <Link
               to="/signup/student"
-              className="px-8 py-4 rounded-full bg-white text-gray-800 font-semibold hover:shadow-xl transition-all flex items-center justify-center gap-2"
+              className="px-8 py-4 rounded-full bg-white text-black font-semibold hover:shadow-xl transition-all flex items-center justify-center gap-2"
             >
               {language === 'ja' ? '学生として登録' : 'Sign Up as Student'}
               <FiArrowRight />
