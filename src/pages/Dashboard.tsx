@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { FiUsers, FiMessageCircle, FiBell, FiUser, FiBriefcase } from 'react-icons/fi';
+import { FiUsers, FiMessageCircle, FiBell, FiUser, FiBriefcase, FiDollarSign, FiShield } from 'react-icons/fi';
 import { useLanguage } from '../contexts/LanguageContext';
 
 const Dashboard: React.FC = () => {
@@ -36,6 +36,20 @@ const Dashboard: React.FC = () => {
       link: '/notifications',
       color: 'from-green-400 to-green-600',
     },
+    {
+      icon: FiDollarSign,
+      title: language === 'ja' ? '企業ダッシュボード' : 'Company Dashboard',
+      description: language === 'ja' ? 'クレジット管理と学生スカウト' : 'Manage credits & scout students',
+      link: '/company',
+      color: 'from-orange-400 to-orange-600',
+    },
+    {
+      icon: FiShield,
+      title: language === 'ja' ? '管理者パネル' : 'Admin Panel',
+      description: language === 'ja' ? 'レポートと取引ログ' : 'View reports & transactions',
+      link: '/admin',
+      color: 'from-red-400 to-red-600',
+    },
   ];
 
   return (
@@ -49,12 +63,12 @@ const Dashboard: React.FC = () => {
           <h1 className="text-4xl font-bold gradient-text mb-2">
             {language === 'ja' ? 'ダッシュボード' : 'Dashboard'}
           </h1>
-          <p className="text-gray-600">
+          <p className="text-black">
             {language === 'ja' ? 'ようこそ、Senpai Careerへ' : 'Welcome to Senpai Career'}
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
           {quickActions.map((action, index) => (
             <motion.div
               key={index}
@@ -69,8 +83,8 @@ const Dashboard: React.FC = () => {
                   <div className={`w-12 h-12 rounded-lg bg-gradient-to-br ${action.color} flex items-center justify-center mb-4`}>
                     <action.icon className="text-2xl text-white" />
                   </div>
-                  <h3 className="text-xl font-semibold mb-2 text-gray-800">{action.title}</h3>
-                  <p className="text-gray-600 text-sm">{action.description}</p>
+                  <h3 className="text-xl font-semibold mb-2 text-black">{action.title}</h3>
+                  <p className="text-black text-sm">{action.description}</p>
                 </div>
               </Link>
             </motion.div>
@@ -84,7 +98,7 @@ const Dashboard: React.FC = () => {
           transition={{ delay: 0.4 }}
           className="mac-card p-8"
         >
-          <h2 className="text-2xl font-bold mb-6 text-gray-800">
+          <h2 className="text-2xl font-bold mb-6 text-black">
             {language === 'ja' ? '最近の活動' : 'Recent Activity'}
           </h2>
           <div className="space-y-4">
@@ -94,10 +108,10 @@ const Dashboard: React.FC = () => {
                   <FiUser className="text-white" />
                 </div>
                 <div className="flex-1">
-                  <p className="text-gray-800 font-medium">
+                  <p className="text-black font-medium">
                     {language === 'ja' ? '新しいメッセージがあります' : 'New message received'}
                   </p>
-                  <p className="text-sm text-gray-600">
+                  <p className="text-sm text-black">
                     {language === 'ja' ? '2時間前' : '2 hours ago'}
                   </p>
                 </div>

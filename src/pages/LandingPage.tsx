@@ -273,12 +273,25 @@ const LandingPage: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
+            className="flex flex-col sm:flex-row gap-4 justify-center items-center"
           >
             <Link
               to="/for-companies"
               className="inline-block px-8 py-4 rounded-full bg-white text-black font-semibold hover:shadow-xl transition-all"
             >
               {t('nav.forCompanies')}
+            </Link>
+            <Link
+              to="/company"
+              className="inline-block px-8 py-4 rounded-full bg-white/20 backdrop-blur-sm text-white font-semibold hover:bg-white/30 transition-all border-2 border-white/50"
+            >
+              {language === 'ja' ? '企業ダッシュボードへ' : 'Go to Company Dashboard'}
+            </Link>
+            <Link
+              to="/admin"
+              className="inline-block px-8 py-4 rounded-full bg-white/20 backdrop-blur-sm text-white font-semibold hover:bg-white/30 transition-all border-2 border-white/50"
+            >
+              {language === 'ja' ? '管理者パネルへ' : 'Go to Admin Panel'}
             </Link>
           </motion.div>
         </div>

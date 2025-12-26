@@ -78,7 +78,7 @@ const AdminPanel: React.FC = () => {
           <h1 className="text-4xl font-bold gradient-text mb-2">
             {language === 'ja' ? '管理者パネル' : 'Admin Panel'}
           </h1>
-          <p className="text-gray-600">
+          <p className="text-black">
             {language === 'ja' ? 'レポート、ユーザー、取引を管理' : 'Manage reports, users, and transactions'}
           </p>
         </motion.div>
@@ -223,15 +223,129 @@ const AdminPanel: React.FC = () => {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="mac-card p-6"
+            className="space-y-4"
           >
-            <h2 className="text-2xl font-bold mb-4 text-gray-800">
-              {language === 'ja' ? '取引ログ' : 'Transaction Logs'}
-            </h2>
-            <p className="text-gray-600">
-              {language === 'ja' ? 'クレジット取引のログを表示' : 'View credit transaction logs'}
-            </p>
-            {/* Transaction logs would go here */}
+            <div className="mac-card p-6">
+              <h2 className="text-2xl font-bold mb-4 text-black">
+                {language === 'ja' ? 'クレジット取引ログ' : 'Credit Transaction Logs'}
+              </h2>
+              <p className="text-black mb-6">
+                {language === 'ja' ? 'すべてのクレジット取引を表示' : 'View all credit transactions'}
+              </p>
+
+              {/* Summary Stats */}
+              <div className="grid md:grid-cols-3 gap-4 mb-6">
+                <div className="p-4 bg-green-50 rounded-lg border-l-4 border-green-500">
+                  <p className="text-sm text-black mb-1">
+                    {language === 'ja' ? '総入金' : 'Total Credits'}
+                  </p>
+                  <p className="text-2xl font-bold text-green-600">¥85,000</p>
+                </div>
+                <div className="p-4 bg-red-50 rounded-lg border-l-4 border-red-500">
+                  <p className="text-sm text-black mb-1">
+                    {language === 'ja' ? '総消費' : 'Total Spent'}
+                  </p>
+                  <p className="text-2xl font-bold text-red-600">¥12,400</p>
+                </div>
+                <div className="p-4 bg-blue-50 rounded-lg border-l-4 border-blue-500">
+                  <p className="text-sm text-black mb-1">
+                    {language === 'ja' ? 'アクティブ企業' : 'Active Companies'}
+                  </p>
+                  <p className="text-2xl font-bold text-blue-600">24</p>
+                </div>
+              </div>
+
+              {/* Transaction List */}
+              <div className="space-y-3">
+                {[
+                  {
+                    id: '1',
+                    company: 'Tech Corp Japan',
+                    type: 'debit',
+                    amount: 200,
+                    description: language === 'ja' ? 'スカウトメッセージ送信' : 'Scout Message Sent',
+                    student: 'John Doe',
+                    timestamp: '2025-01-15 14:30',
+                  },
+                  {
+                    id: '2',
+                    company: 'Global Solutions Inc',
+                    type: 'credit',
+                    amount: 10000,
+                    description: language === 'ja' ? 'クレジット購入' : 'Credit Purchase',
+                    timestamp: '2025-01-15 10:15',
+                  },
+                  {
+                    id: '3',
+                    company: 'Tech Corp Japan',
+                    type: 'debit',
+                    amount: 200,
+                    description: language === 'ja' ? 'スカウトメッセージ送信' : 'Scout Message Sent',
+                    student: 'Jane Smith',
+                    timestamp: '2025-01-14 16:45',
+                  },
+                  {
+                    id: '4',
+                    company: 'Startup XYZ',
+                    type: 'debit',
+                    amount: 200,
+                    description: language === 'ja' ? 'スカウトメッセージ送信' : 'Scout Message Sent',
+                    student: 'Tanaka Yuki',
+                    timestamp: '2025-01-14 09:20',
+                  },
+                  {
+                    id: '5',
+                    company: 'Global Solutions Inc',
+                    type: 'credit',
+                    amount: 5000,
+                    description: language === 'ja' ? 'クレジット購入' : 'Credit Purchase',
+                    timestamp: '2025-01-13 11:30',
+                  },
+                ].map((transaction, index) => (
+                  <motion.div
+                    key={transaction.id}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.05 }}
+                    className={`p-4 rounded-lg border-l-4 ${
+                      transaction.type === 'debit' 
+                        ? 'bg-red-50 border-red-500' 
+                        : 'bg-green-50 border-green-500'
+                    }`}
+                  >
+                    <div className="flex items-center justify-between">
+                      <div className="flex-1">
+                        <div className="flex items-center gap-3 mb-2">
+                          <span className="font-semibold text-black">{transaction.company}</span>
+                          <span className={`text-lg font-bold ${
+                            transaction.type === 'debit' ? 'text-red-600' : 'text-green-600'
+                          }`}>
+                            {transaction.type === 'debit' ? '-' : '+'}¥{transaction.amount.toLocaleString()}
+                          </span>
+                          <span className={`px-2 py-1 rounded text-xs font-medium ${
+                            transaction.type === 'debit'
+                              ? 'bg-red-100 text-red-700'
+                              : 'bg-green-100 text-green-700'
+                          }`}>
+                            {transaction.type === 'debit' 
+                              ? (language === 'ja' ? '支払い' : 'Debit')
+                              : (language === 'ja' ? '入金' : 'Credit')
+                            }
+                          </span>
+                        </div>
+                        <p className="text-black text-sm">{transaction.description}</p>
+                        {transaction.student && (
+                          <p className="text-sm text-gray-600 mt-1">
+                            {language === 'ja' ? '学生' : 'Student'}: {transaction.student}
+                          </p>
+                        )}
+                        <p className="text-xs text-gray-500 mt-1">{transaction.timestamp}</p>
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
           </motion.div>
         )}
       </div>

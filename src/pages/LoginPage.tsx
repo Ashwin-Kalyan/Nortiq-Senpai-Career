@@ -92,6 +92,27 @@ const LoginPage: React.FC = () => {
               {t('auth.studentSignUp')}
             </Link>
           </div>
+
+          {/* Quick Access Links for Testing */}
+          <div className="mt-6 pt-6 border-t border-gray-200">
+            <p className="text-xs text-gray-500 text-center mb-3">
+              {language === 'ja' ? 'テスト用クイックアクセス' : 'Quick Access (Testing)'}
+            </p>
+            <div className="grid grid-cols-2 gap-2">
+              <Link
+                to="/company"
+                className="px-3 py-2 text-xs rounded-lg bg-blue-100 text-blue-700 hover:bg-blue-200 text-center font-medium"
+              >
+                {language === 'ja' ? '企業ダッシュボード' : 'Company Dashboard'}
+              </Link>
+              <Link
+                to="/admin"
+                className="px-3 py-2 text-xs rounded-lg bg-purple-100 text-purple-700 hover:bg-purple-200 text-center font-medium"
+              >
+                {language === 'ja' ? '管理者パネル' : 'Admin Panel'}
+              </Link>
+            </div>
+          </div>
         </motion.form>
       </motion.div>
     </div>
